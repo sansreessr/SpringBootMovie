@@ -1,4 +1,4 @@
-/*package com.stackroute.movieapp.onstartup;
+package com.stackroute.movieapp.onstartup;
 
 import com.stackroute.movieapp.domain.Movie;
 import com.stackroute.movieapp.repository.MovieRepository;
@@ -20,4 +20,4 @@ public class PreFillData2 implements CommandLineRunner {
     public void run(String... args) throws Exception {
         movieRepository.save(new Movie(2,"Once Upon A Time In Hollywood", "English", "Drama", "11 Aug 2019", 8.7, 21431));
     }
-}*/
+}
