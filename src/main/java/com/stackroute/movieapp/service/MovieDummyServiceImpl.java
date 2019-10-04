@@ -5,13 +5,13 @@ import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.exceptions.MovieNotFoundException;
 import com.stackroute.movieapp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@Primary
+@Profile("DummyService")
 public class MovieDummyServiceImpl implements MovieService {
 
     private MovieRepository movieRepository;

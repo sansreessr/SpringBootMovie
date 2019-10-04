@@ -6,7 +6,6 @@ import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.exceptions.MovieNotFoundException;
 import com.stackroute.movieapp.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +18,8 @@ public class MovieController {
     @Autowired
     MovieService movieService;
 
-    @Autowired
-    @Qualifier("qualifier")
-    MovieService movieService2;
-
-    public MovieController(MovieService movieService, MovieService movieService2) {
+    public MovieController(MovieService movieService) {
         this.movieService = movieService;
-        this.movieService2 = movieService2;
     }
 
     @PostMapping("movie")
@@ -38,7 +32,7 @@ public class MovieController {
     @GetMapping("movie")
     public ResponseEntity<?> getAllMovies() throws MovieNotFoundException {
         ResponseEntity responseEntity;
-        return new ResponseEntity<List<Movie>>(movieService2.getAllMovies(), HttpStatus.OK);
+        return new ResponseEntity<List<Movie>>(movieService.getAllMovies(), HttpStatus.OK);
     }
 
     @DeleteMapping("movie/{id}")
