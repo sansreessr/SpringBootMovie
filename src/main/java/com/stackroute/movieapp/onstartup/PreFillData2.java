@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class PreFillData2 implements CommandLineRunner {
 
-    private MovieRepository movieRepository;
+    private InitializeConfigProp configProp;
 
     @Autowired
-    public PreFillData2(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
+    public PreFillData2(InitializeConfigProp configProp) {
+        this.configProp = configProp;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        movieRepository.save(new Movie(2,"Once Upon A Time In Hollywood", "English", "Drama", "11 Aug 2019", 8.7, 21431));
+        configProp.usingConfigProp();
     }
 }

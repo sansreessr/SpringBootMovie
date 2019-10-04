@@ -1,4 +1,4 @@
-package com.stackroute.movieapp.onstartup;
+/*package com.stackroute.movieapp.onstartup;
 
 import com.stackroute.movieapp.domain.Movie;
 import com.stackroute.movieapp.repository.MovieRepository;
@@ -22,4 +22,4 @@ public class PreFillData1 implements ApplicationListener<ContextRefreshedEvent> 
         Movie movie = new Movie(1,"Joker","English","Fiction","3 Oct 2019",9.2,21312);
         movieRepository.save(movie);
     }
-}
+}*/

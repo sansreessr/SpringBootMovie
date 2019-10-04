@@ -1,4 +1,4 @@
-/*package com.stackroute.movieapp.onstartup;
+package com.stackroute.movieapp.onstartup;
 
 import com.stackroute.movieapp.domain.Movie;
 import com.stackroute.movieapp.repository.MovieRepository;
@@ -50,4 +50,4 @@ public class Initialize {
         repository.save(new Movie(Integer.parseInt(env.getProperty("id3")), env.getProperty("name3"), env.getProperty("lang3"),
                 env.getProperty("genre3"), env.getProperty("date3"), Double.parseDouble(env.getProperty("rate3")), Long.parseLong(env.getProperty("count3"))));
     }
-}*/
+}
