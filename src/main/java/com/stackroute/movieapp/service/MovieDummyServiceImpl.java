@@ -5,19 +5,19 @@ import com.stackroute.movieapp.exceptions.MovieAlreadyExistsException;
 import com.stackroute.movieapp.exceptions.MovieNotFoundException;
 import com.stackroute.movieapp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@Qualifier("qualifier")
-public class MovieServiceImpl implements MovieService{
+@Primary
+public class MovieDummyServiceImpl implements MovieService {
 
     private MovieRepository movieRepository;
 
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository) {
+    public MovieDummyServiceImpl(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
@@ -39,7 +39,7 @@ public class MovieServiceImpl implements MovieService{
         if(allMovies.isEmpty()) {
             throw new MovieNotFoundException("No movie found");
         }
-        return allMovies;
+        return null;
     }
 
     @Override
