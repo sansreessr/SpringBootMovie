@@ -15,43 +15,39 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api/")
 public class MovieController {
-    @Autowired
-    MovieService movieService;
 
+    private MovieService movieService;
+    ResponseEntity<?> responseEntity;
+
+    @Autowired
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
 
     @PostMapping("movie")
     public ResponseEntity<?> saveMovie(@RequestBody Movie movie) throws MovieAlreadyExistsException {
-        ResponseEntity responseEntity;
         movieService.saveMovie(movie);
         return new ResponseEntity<String>("Successfully added", HttpStatus.CREATED);
     }
 
-    @GetMapping("movie")
+    @GetMapping("movies")
     public ResponseEntity<?> getAllMovies() throws MovieNotFoundException {
-        ResponseEntity responseEntity;
         return new ResponseEntity<List<Movie>>(movieService.getAllMovies(), HttpStatus.OK);
     }
 
     @DeleteMapping("movie/{id}")
     public ResponseEntity<?> deleteMovie(@PathVariable int id) throws MovieNotFoundException{
-        ResponseEntity responseEntity;
-        movieService.deleteMovie(id);
-        return new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
+        return new ResponseEntity<Movie>(movieService.deleteMovieById(id), HttpStatus.OK);
     }
 
     @PutMapping("movie/{id}")
     public ResponseEntity<?> updateMovie(@RequestBody Movie movie, @PathVariable int id) throws MovieNotFoundException {
-        ResponseEntity responseEntity;
         movieService.updateMovie(movie, id);
         return new ResponseEntity<String>("Successfully updated", HttpStatus.CREATED);
     }
 
-    @GetMapping("movie/movieName={movieName}")
+    @GetMapping("movies/movieName={movieName}")
     public ResponseEntity<?> movieByName(@PathVariable String movieName) throws MovieNotFoundException {
-        ResponseEntity responseEntity;
         return new ResponseEntity<List<Movie>>(movieService.movieByName(movieName), HttpStatus.OK);
     }
 }

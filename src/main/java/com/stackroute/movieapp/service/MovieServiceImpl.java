@@ -6,7 +6,6 @@ import com.stackroute.movieapp.exceptions.MovieNotFoundException;
 import com.stackroute.movieapp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,11 +43,13 @@ public class MovieServiceImpl implements MovieService{
     }
 
     @Override
-    public void deleteMovie(int movieId) throws MovieNotFoundException{
+    public Movie deleteMovieById(int movieId) throws MovieNotFoundException{
         if(!movieRepository.existsById(movieId)) {
             throw new MovieNotFoundException("Movie not found");
         }
+        Movie movie = movieRepository.findById(movieId).orElseThrow();
         movieRepository.deleteById(movieId);
+        return movie;
     }
 
     @Override
